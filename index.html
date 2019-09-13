@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+	<div class="reminders">
+		<button class="btn reminders__create-auth">Создать профиль</button>
+		<form class="reminders__form" action="#" >
+			<div class="reminders__fields">
+				<textarea class="reminders__text" name="note" cols="30" rows="10" placeholder="Введите текс напоминания"></textarea>
+				<label class="reminders__date-label"> Когда напомнить ?
+					<input class="reminders__date" type="datetime-local" name="date"></imput>
+				</label>
+			</div>
+			<div class="reminders__control">
+				<button class="btn btn--disabled reminders__add" type="submit">Создать</button>
+				<button class="btn btn--disabled reminders__change" type="button">Изменить</button>
+				<button class="btn btn--disabled reminders__delete" type="button">Удалить</button>
+				<button class="btn btn--disabled reminders__new" type="reset">Новое</button>
+			</div>
+		</form>
+		<div class="reminders__all"> Мои напоминания:
+			<ul class="reminders__list">
+			</ul>
+		</div>
+	</div>
+	<template id="reminder">
+		<li class="reminders__item">
+			<span class="reminders__item-date"></span>
+			<span class="reminders__item-text"></span> 
+		</li>
+	</template>
+<script src="script.js"></script>
+</body>
+</html>
