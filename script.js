@@ -7,7 +7,7 @@ var btnAll = document.querySelectorAll(".btn");
 var form = document.querySelector(".reminders__form");
 var reminderText = form.querySelector(".reminders__text");
 var reminderDate = form.querySelector(".reminders__date");
-var url = "https://europe-west1-st-testcase.cloudfunctions.net/api/reminders?userId=1YaPw0befZHDp5ag9RXF";
+var url = "https://europe-west1-st-testcase.cloudfunctions.net";
 var userId;
 var dateNear;
 var reminderNear;
@@ -47,7 +47,7 @@ document.addEventListener("click", function(evt) {
 	}
 
 
-	if (target.parentNode.classList.contains("reminders__item") ) {
+	if (target.parentNode.classList.contains("reminders__item")) {
 		var reminder = target.parentNode;
 		reminderText.value  = reminder.children[1].textContent;
 		reminderDate.value  = reminder.getAttribute("data-date");
@@ -87,12 +87,12 @@ async function auth() {
 
 async function getReminders(userId) {
 	var response = await fetch(url + "/api/reminders?userId=" + userId);
-	// if (response.ok) {
+	if (response.ok) {
 		var result = await response.json();
 		showAllReminders(result);
-	// } else {
-		// alert("Ошибка HTTP: " + response.status);
-	// }	
+	} else {
+		alert("Ошибка HTTP: " + response.status);
+	}	
 }
 
 async function addReminder(userId, reminder) {
@@ -101,11 +101,11 @@ async function addReminder(userId, reminder) {
 		headers: {'Content-Type': 'application/json;charset=utf-8'},
 		body: reminder
 	});
-	// if (response.ok) {
+	if (response.ok) {
 		getReminders(userId);
-	// } else {
-	// 	alert("Ошибка HTTP: " + response.status);
-	// }	
+	} else {
+		alert("Ошибка HTTP: " + response.status);
+	}	
 }
 
 async function changeReminder(userId, reminderId, reminder) {
@@ -188,4 +188,3 @@ function checkDate (reminder) {
 	 	}
 	}
 }
-// ngT0cpscp9HdkIflqhs5
